@@ -1,3 +1,4 @@
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 # 📊 Clustering and Visualizing Text Data for Similarity
 
 ## 📝 Overview  
