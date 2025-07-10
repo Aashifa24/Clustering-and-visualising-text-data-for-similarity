@@ -31,10 +31,12 @@ The dataset used is **20 Newsgroups** with 3 selected categories.
 
 ## 📁 Project Structure
 
-- `final_sbert_kmeans_text_clustering.ipynb` – Main Jupyter notebook  
+- `README.md` – Project overview and usage guide 
+- `text_clustering_similarity.ipynb` – Jupyter notebook with full code
+- `requirements.txt` – Dependencies to run the notebook  
 - `sbert_kmeans_model.pkl` – Saved best model (KMeans)  
-- `sbert_embeddings.npy` – Saved SBERT embeddings (optional reuse)  
-- `README.md` – This file
+- `sbert_embeddings.npy` – Saved SBERT embeddings (optional reuse)
+- `sbert_kmeans_clusters.png` -  Best clustering visualization (SBERT + KMeans)
 
 ---
 
@@ -64,7 +66,7 @@ pip install -r requirements.txt
 ### 3️⃣ Run the Notebook  
 Open the notebook and execute all cells:
 ```bash
-final_sbert_kmeans_text_clustering.ipynb
+text_clustering_similarity.ipynb
 ```
 
 ### 4️⃣ Inference Example
