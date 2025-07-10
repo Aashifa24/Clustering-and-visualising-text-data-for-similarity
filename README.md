@@ -100,6 +100,13 @@ print("Predicted Cluster:", label)
 
 ✅ SBERT + KMeans showed the most accurate and well-separated clusters.
 
+🖼️ **Cluster Visualization:**  
+The clustering result is visualized using PCA and saved as:
+
+> `sbert_kmeans_clusters.png`
+
+This image shows how the documents were grouped into meaningful clusters.
+
 ---
 
 ## 🧠 Code Structure and Best Practices
