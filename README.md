@@ -103,7 +103,7 @@ print("Predicted Cluster:", label)
 🖼️ **Cluster Visualization:**  
 The clustering result is visualized using PCA and saved as:
 
-> `sbert_kmeans_clusters.png`
+> [`sbert_kmeans_clusters.png`](https://github.com/Aashifa24/Clustering-and-visualising-text-data-for-similarity/blob/main/sbert_kmeans_clusters.png)
 
 This image shows how the documents were grouped into meaningful clusters.
 
