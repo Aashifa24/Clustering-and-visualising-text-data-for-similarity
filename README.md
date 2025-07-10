@@ -1,67 +1,71 @@
-Clustering and Visualizing Text Data for Similarity
-Overview
-This project explores various techniques for clustering text data based on semantic similarity. We experiment with several embedding methods—including TF-IDF, GloVe, SentenceTransformer (SBERT), and BERT—and compare clustering performance using algorithms like KMeans and DBSCAN. The goal is to identify the best combination for grouping similar documents using the 20 Newsgroups dataset (with 3 selected categories).
+# 📊 Clustering and Visualizing Text Data for Similarity
 
-Project Objectives
-Preprocessing: Apply standard NLP preprocessing steps (lowercasing, URL/special character removal, stopword removal, and lemmatization).
+## 📝 Overview  
+This project explores various techniques for clustering text data based on semantic similarity.  
+We experiment with several embedding methods—**TF-IDF**, **GloVe**, **SentenceTransformer (SBERT)**, and **BERT**—and compare clustering performance using **KMeans** and **DBSCAN**.  
+The dataset used is **20 Newsgroups** with 3 selected categories.
 
-Embedding Techniques: Explore multiple text representations:
+---
 
-TF-IDF
+## 🎯 Project Objectives
 
-GloVe
+- **Preprocessing:** Lowercasing, URL/special character removal, stopword removal, and lemmatization  
+- **Embedding Techniques:**  
+  - TF-IDF  
+  - GloVe  
+  - SentenceTransformer (SBERT)  
+  - BERT  
+- **Clustering Algorithms:**  
+  - KMeans  
+  - DBSCAN  
+- **Visualization:**  
+  - PCA  
+  - t-SNE  
+- **Evaluation Metrics:**  
+  - Adjusted Rand Index (ARI)  
+  - Normalized Mutual Information (NMI)  
+  - Fowlkes-Mallows Index (FMI)  
+- **Model Saving:** Serialize best model (SBERT + KMeans) for inference
 
-SentenceTransformer (SBERT)
+---
 
-BERT
+## 📁 Project Structure
 
-Clustering Algorithms: Evaluate two clustering methods:
+- `final_sbert_kmeans_text_clustering.ipynb` – Main Jupyter notebook  
+- `sbert_kmeans_model.pkl` – Saved best model (KMeans)  
+- `sbert_embeddings.npy` – Saved SBERT embeddings (optional reuse)  
+- `README.md` – This file
 
-KMeans
+---
 
-DBSCAN
+## ⚙️ Setup and Usage
 
-Visualization: Use PCA (and t-SNE) to visualize clustering results in 2D.
+### 1️⃣ Clone the Repository
 
-Evaluation: Measure clustering quality using Adjusted Rand Index (ARI), Normalized Mutual Information (NMI), and Fowlkes-Mallows Index (FMI).
-
-Model Saving: Serialize the best model (SBERT + KMeans) for future inference.
-
-Project Structure
-Notebook: The main analysis is done in the Jupyter Notebook (e.g., final_sbert_kmeans_text_clustering.ipynb).
-
-Model Serialization: The final best model is saved as sbert_kmeans_model.pkl, with optional embeddings saved as sbert_embeddings.npy.
-
-README.md: This file summarizes the project, its findings, and usage instructions.
-
-Setup and Usage
-Clone the Repository:
-
-bash
-Copy
-Edit
+```bash
 git clone https://github.com/your_username/your_repo_name.git  
-cd your_repo_name  
-Create a Virtual Environment and Install Dependencies:
+cd your_repo_name
+2️⃣ Create Virtual Environment & Install Dependencies
+bash
+Copy
+Edit
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+pip install -r requirements.txt
+📌 Note: Make sure requirements.txt includes: numpy, pandas, nltk, scikit-learn, sentence-transformers, transformers, torch, matplotlib, seaborn
+
+3️⃣ Run the Notebook
+Open the notebook and execute all cells:
 
 bash
 Copy
 Edit
-python -m venv venv  
-# On Windows:  
-venv\Scripts\activate  
-# On macOS/Linux:  
-source venv/bin/activate  
-
-pip install -r requirements.txt  
-Note: The requirements.txt should list libraries like numpy, pandas, nltk, scikit-learn, sentence-transformers, transformers, torch, matplotlib, seaborn.
-
-Run the Notebook:
-Open final_sbert_kmeans_text_clustering.ipynb and execute the cells step-by-step to reproduce the results.
-
-Inference:
-After training, load the SBERT + KMeans model for inference:
-
+final_sbert_kmeans_text_clustering.ipynb
+4️⃣ Inference Example
 python
 Copy
 Edit
@@ -71,29 +75,36 @@ import joblib
 sbert_model = SentenceTransformer('all-MiniLM-L6-v2')  
 kmeans_model = joblib.load('sbert_kmeans_model.pkl')  
 
-# Preprocess input text  
-text = "Your custom text here"  
-processed_text = preprocess(text)  # Use your preprocessing function  
-embedding = sbert_model.encode(processed_text)  
-predicted_cluster = kmeans_model.predict([embedding])[0]  
-print("Predicted Cluster:", predicted_cluster)  
-Results
-After evaluating all combinations, the best performing setup was:
+# Your text input
+text = "Your custom text here"
+processed = preprocess(text)  # Apply same preprocessing
+embedding = sbert_model.encode(processed)
+label = kmeans_model.predict([embedding])[0]
+print("Predicted Cluster:", label)
+📊 Results
+Best Combination:
 
 Embedding: SentenceTransformer (SBERT)
 
 Clustering: KMeans
 
-Metrics: ARI: 0.8358, NMI: 0.7934, FMI: 0.8907
+Metrics:
 
-This confirms that SBERT + KMeans is the most effective approach for clustering text similarity in this project.
+ARI: 0.8358
 
-Code Organization and Best Practices
-The code follows basic DRY and modular practices.
+NMI: 0.7934
 
-Functions are defined for preprocessing, embedding generation, and evaluation.
+FMI: 0.8907
 
-Clustering and visualization steps are clearly segmented for readability.
+✅ SBERT + KMeans showed the most accurate and well-separated clusters.
 
-Conclusion
-This project demonstrates effective techniques for clustering and visualizing text data. The successful combination of SBERT embeddings with KMeans clustering yields accurate and interpretable clusters, which can be further applied in market research, segmentation, sentiment analysis, and more.
+🧠 Code Structure and Best Practices
+Functions defined for preprocessing, embedding, and evaluation
+
+Clustering logic separated clearly
+
+Basic DRY principles followed
+
+✅ Conclusion
+This project demonstrates how modern embedding techniques (like SBERT) combined with clustering algorithms (like KMeans) can effectively group and visualize semantically similar documents.
+Applications include market research, customer segmentation, and topic discovery.
