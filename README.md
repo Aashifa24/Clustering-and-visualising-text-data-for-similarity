@@ -45,10 +45,11 @@ The dataset used is **20 Newsgroups** with 3 selected categories.
 ```bash
 git clone https://github.com/your_username/your_repo_name.git  
 cd your_repo_name
-2️⃣ Create Virtual Environment & Install Dependencies
-bash
-Copy
-Edit
+```
+
+### 2️⃣ Create Virtual Environment & Install Dependencies
+
+```bash
 python -m venv venv
 # Windows
 venv\Scripts\activate
@@ -56,19 +57,19 @@ venv\Scripts\activate
 source venv/bin/activate
 
 pip install -r requirements.txt
-📌 Note: Make sure requirements.txt includes: numpy, pandas, nltk, scikit-learn, sentence-transformers, transformers, torch, matplotlib, seaborn
+```
 
-3️⃣ Run the Notebook
+📌 *Note: Make sure `requirements.txt` includes: numpy, pandas, nltk, scikit-learn, sentence-transformers, transformers, torch, matplotlib, seaborn*
+
+### 3️⃣ Run the Notebook  
 Open the notebook and execute all cells:
-
-bash
-Copy
-Edit
+```bash
 final_sbert_kmeans_text_clustering.ipynb
-4️⃣ Inference Example
-python
-Copy
-Edit
+```
+
+### 4️⃣ Inference Example
+
+```python
 from sentence_transformers import SentenceTransformer  
 import joblib  
 
@@ -81,30 +82,37 @@ processed = preprocess(text)  # Apply same preprocessing
 embedding = sbert_model.encode(processed)
 label = kmeans_model.predict([embedding])[0]
 print("Predicted Cluster:", label)
-📊 Results
-Best Combination:
+```
 
-Embedding: SentenceTransformer (SBERT)
+---
 
-Clustering: KMeans
+## 📊 Results
 
-Metrics:
-
-ARI: 0.8358
-
-NMI: 0.7934
-
-FMI: 0.8907
+**Best Combination:**
+- **Embedding:** SentenceTransformer (SBERT)  
+- **Clustering:** KMeans  
+- **Metrics:**  
+  - ARI: `0.8358`  
+  - NMI: `0.7934`  
+  - FMI: `0.8907`  
 
 ✅ SBERT + KMeans showed the most accurate and well-separated clusters.
 
-🧠 Code Structure and Best Practices
-Functions defined for preprocessing, embedding, and evaluation
+---
 
-Clustering logic separated clearly
+## 🧠 Code Structure and Best Practices
 
-Basic DRY principles followed
+- Functions defined for **preprocessing**, **embedding**, and **evaluation**  
+- Clustering logic separated clearly  
+- Basic **DRY principles** followed
 
-✅ Conclusion
+---
+
+## ✅ Conclusion
+
 This project demonstrates how modern embedding techniques (like SBERT) combined with clustering algorithms (like KMeans) can effectively group and visualize semantically similar documents.
-Applications include market research, customer segmentation, and topic discovery.
+
+**Applications include:**  
+- Market research  
+- Customer segmentation  
+- Topic discovery
